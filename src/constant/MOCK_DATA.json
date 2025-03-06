@@ -1,0 +1,137 @@
+[
+    {
+      "id": "ID:#5412448",
+      "modelName": "Blonde Drizzle",
+      "modelType": "Extraction",
+      "description": "Edit customer",
+      "createdOn": "02/11/2024",
+      "lastTrainedOn": "25/05/2024",
+      "status": "Active"
+    },
+    {
+      "id": "ID:#5412449",
+      "modelName": "Silver Falcon",
+      "modelType": "Classification",
+      "description": "Analyze user behavior",
+      "createdOn": "05/10/2024",
+      "lastTrainedOn": "20/06/2024",
+      "status": "Inactive"
+    },
+    {
+      "id": "ID:#5412450",
+      "modelName": "Crimson Hawk",
+      "modelType": "Prediction",
+      "description": "Forecast sales trends",
+      "createdOn": "12/09/2024",
+      "lastTrainedOn": "15/07/2024",
+      "status": "Active"
+    },
+    {
+      "id": "ID:#5412451",
+      "modelName": "Azure Phoenix",
+      "modelType": "Segmentation",
+      "description": "Categorize customer base",
+      "createdOn": "22/08/2024",
+      "lastTrainedOn": "05/07/2024",
+      "status": "Pending"
+    },
+    {
+      "id": "ID:#5412452",
+      "modelName": "Emerald Thunder",
+      "modelType": "Anomaly Detection",
+      "description": "Detect fraudulent transactions",
+      "createdOn": "14/07/2024",
+      "lastTrainedOn": "10/06/2024",
+      "status": "Active"
+    },
+    {
+      "id": "ID:#5412453",
+      "modelName": "Golden Breeze",
+      "modelType": "Recommendation",
+      "description": "Suggest personalized products",
+      "createdOn": "10/06/2024",
+      "lastTrainedOn": "30/05/2024",
+      "status": "Inactive"
+    },
+    {
+      "id": "ID:#5412454",
+      "modelName": "Obsidian Shadow",
+      "modelType": "Clustering",
+      "description": "Group similar items",
+      "createdOn": "05/05/2024",
+      "lastTrainedOn": "01/04/2024",
+      "status": "Active"
+    },
+    {
+      "id": "ID:#5412455",
+      "modelName": "Ruby Spark",
+      "modelType": "Translation",
+      "description": "Translate multi-language content",
+      "createdOn": "28/04/2024",
+      "lastTrainedOn": "15/04/2024",
+      "status": "Pending"
+    },
+    {
+      "id": "ID:#5412456",
+      "modelName": "Ivory Mist",
+      "modelType": "Sentiment Analysis",
+      "description": "Analyze customer feedback",
+      "createdOn": "18/03/2024",
+      "lastTrainedOn": "05/03/2024",
+      "status": "Active"
+    },
+    {
+      "id": "ID:#5412457",
+      "modelName": "Amber Streak",
+      "modelType": "Text Generation",
+      "description": "Generate marketing content",
+      "createdOn": "12/02/2024",
+      "lastTrainedOn": "01/02/2024",
+      "status": "Inactive"
+    },
+    {
+      "id": "ID:#5412458",
+      "modelName": "Cobalt Wave",
+      "modelType": "Speech Recognition",
+      "description": "Transcribe audio data",
+      "createdOn": "25/01/2024",
+      "lastTrainedOn": "10/01/2024",
+      "status": "Active"
+    },
+    {
+      "id": "ID:#5412459",
+      "modelName": "Sapphire Horizon",
+      "modelType": "Vision Detection",
+      "description": "Identify objects in images",
+      "createdOn": "30/12/2023",
+      "lastTrainedOn": "20/12/2023",
+      "status": "Pending"
+    },
+    {
+      "id": "ID:#5412460",
+      "modelName": "Titanium Frost",
+      "modelType": "Automation",
+      "description": "Automate repetitive tasks",
+      "createdOn": "15/11/2023",
+      "lastTrainedOn": "05/11/2023",
+      "status": "Inactive"
+    },
+    {
+      "id": "ID:#5412461",
+      "modelName": "Jade Comet",
+      "modelType": "Security",
+      "description": "Monitor cybersecurity threats",
+      "createdOn": "08/10/2023",
+      "lastTrainedOn": "25/09/2023",
+      "status": "Active"
+    },
+    {
+      "id": "ID:#5412462",
+      "modelName": "Onyx Pulse",
+      "modelType": "Data Cleaning",
+      "description": "Detect and correct errors",
+      "createdOn": "01/09/2023",
+      "lastTrainedOn": "18/08/2023",
+      "status": "Active"
+    }
+]
