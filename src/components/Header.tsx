@@ -9,7 +9,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
   return (
-    <header className="flex sticky top-0   z-999  bg-white drop-shadow-1 ">
+    <header className="flex sticky top-0  z-999  bg-white drop-shadow-1 ">
       <div className="flex flex-grow items-center px-6 py-4 shadow-2 md:px-6 2xl:px-11 gap-5 lg:min-h-[92px] ">
         <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
           {/* <!-- Hamburger Toggle BTN --> */}
@@ -67,8 +67,9 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
         <h3 id="_left-text" className="text-primary font-semibold hidden lg:block">
           AI/ML Model Builder
         </h3>
+        <span className="lg:hidden"></span>
 
-        <Search className="max-w-[273px] flex-1 lg:flex-none" inputClass="bg-[#F9F9FB] border-[#FEFEFE]"/>
+        <Search className="max-w-[273px] hidden  flex-1 lg:flex-none" inputClass="bg-[#F9F9FB] border-[#FEFEFE]"/>
         <RightProfile />
       </section>
     </header>

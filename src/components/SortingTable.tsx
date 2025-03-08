@@ -8,7 +8,6 @@ import {
   TableState,
   UsePaginationInstanceProps,
   UsePaginationState,
-  UseSortByColumnProps,
 } from "react-table";
 import { ModelData } from "../constant/columns";
 import DeleteConfirmationModal from "./DeleteConfirmationModal"; // Import the modal
@@ -50,7 +49,7 @@ const SortingTable: React.FC<SortingTableProps> = ({
     closeDeleteModal();
   };
 
-  const columns: Column<ModelData>[] = useMemo(
+  const columns: Column<ModelData>[]  = useMemo(
     () => [
       { Header: "Model Name", accessor: "modelName" },
       { Header: "Model Type", accessor: "modelType" },
@@ -104,7 +103,7 @@ const SortingTable: React.FC<SortingTableProps> = ({
     UsePaginationState<ModelData>;
 
   return (
-    <div className="">
+    <>
       <table {...getTableProps()} className="w-full border-collapse overflow-auto">
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -202,7 +201,7 @@ const SortingTable: React.FC<SortingTableProps> = ({
 
       {/* Delete Confirmation Modal */}
       <DeleteConfirmationModal isOpen={isModalOpen} onClose={closeDeleteModal} onConfirm={handleDelete} />
-    </div>
+    </>
   );
 };
 

@@ -8,14 +8,14 @@ const Filter = () => {
       <Search className="w-full flex-1 " placeholder="Search by Name, ID" />
       <div
         id="_filter"
-        className="bg-placeholder flex items-center border-[#FEFEFE] border py-3 rounded-md px-4 gap-2 cursor-pointer"
+        className="hidden lg:flex bg-placeholder items-center border-[#FEFEFE] border py-3 rounded-md px-4 gap-2 cursor-pointer"
       >
        <FilterIcon/>
         <span>Filters</span>
       </div>
       <div
         id="_date-picker"
-        className="bg-placeholder flex items-center border-[#FEFEFE] border py-3 rounded-md px-4 gap-2 cursor-pointer"
+        className="hidden md:flex bg-placeholder items-center border-[#FEFEFE] border py-3 rounded-md px-4 gap-2 cursor-pointer"
       >
        <CalendarIcon/>
         <span>April 11-April 2</span>
