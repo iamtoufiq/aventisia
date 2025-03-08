@@ -1,16 +1,13 @@
-import { useState } from "react";
 import ClickOutside from "./ClickOutside";
 
 const DropdownNotification = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  console.log(dropdownOpen);
   return (
-    <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
+    <ClickOutside onClick={() => {}} className="relative">
       <div id="_icons" className="flex items-center gap-3 lg:gap-[14px]">
         <li className="relative">
-        <span className="absolute top-2 right-2 text-[#684418] bg-[#ffbc14] w-5 h-5 flex items-center justify-center rounded-full text-xs font-semibold translate-x-1/2 -translate-y-1/2 ">
-    2
-  </span>
+          <span className="absolute top-2 right-2 text-[#684418] bg-[#ffbc14] w-5 h-5 flex items-center justify-center rounded-full text-xs font-semibold translate-x-1/2 -translate-y-1/2 ">
+            2
+          </span>
           <svg
             width="42"
             height="43"
@@ -124,8 +121,12 @@ const DropdownNotification = () => {
             />
           </svg>
           <div>
-            <h5 className="text-[14.3px] text-[#585858] leading-[100%] tracking-normal">Neurotic Spy</h5>
-            <p className="text-[10px] text-[#A9AEB4] leading-[100%] tracking-normal">neurotic@taildo.com</p>
+            <h5 className="text-[14.3px] text-[#585858] leading-[100%] tracking-normal">
+              Neurotic Spy
+            </h5>
+            <p className="text-[10px] text-[#A9AEB4] leading-[100%] tracking-normal">
+              neurotic@taildo.com
+            </p>
           </div>
         </li>
         <li>

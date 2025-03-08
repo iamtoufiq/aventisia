@@ -158,11 +158,12 @@ const SortingTable: React.FC<SortingTableProps> = ({
                   key={column.id}
                 >
                   {column.render("Header")}
-                  {column.canSort && (
-                    <span className="inline-block ml-1">
-                      <UpDownIcon />
-                    </span>
-                  )}
+                  {column.canSort &&
+                    column.id !== "id" && ( // Exclude "Action" column
+                      <span className="inline-block ml-1">
+                        <UpDownIcon />
+                      </span>
+                    )}
                 </th>
               ))}
             </tr>

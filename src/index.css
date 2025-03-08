@@ -3,6 +3,8 @@
 @theme {
   --color-primary: #565B63;
   --color-bg-primary: #f7f8f9;
+  --color-secondary: #4F46E5;
+  --color-tertiary: #1E1B4B
 }
 
 /* .no-scrollbar::-webkit-scrollbar {

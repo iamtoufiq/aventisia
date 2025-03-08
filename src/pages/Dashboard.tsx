@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import SortingTable from "../components/SortingTable";
+
 import DefaultLayout from "../Layouts/DefaultLayout";
 import CreateModelModal from "../components/CreateModelModal";
-import MOCK_DATA from "../constant/MOCK_DATA.json";
 import CalendarIcon from "../icons/CalendarIcon";
 import FilterIcon from "../icons/FilterIcon";
+import MOCK_DATA from "../constant/MOCK_DATA.json";
+
 import HeadingSecondary from "../components/HeadingSecondary";
 import ButtonPrimary from "../components/ButtonPrimary";
 import SearchInput from "../components/SearchInput";
@@ -19,7 +21,6 @@ export interface ModelData {
   lastTrainedOn: string;
   status: string;
 }
-
 
 // Define type for partial data from the modal
 interface NewModelInput {
@@ -38,20 +39,24 @@ const Dashboard = () => {
       llm: item.llm ?? "GPT-4", // Properly handle missing 'llm'
     })) as ModelData[]
   );
-  
+
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState<ModelData[]>(data);
 
   useEffect(() => {
     const handler = setTimeout(() => {
       if (searchTerm.trim() === "") {
-        setFilteredData(data); // data is now ModelData[]
+        setFilteredData(data);
       } else {
         setFilteredData(
-          data.filter((model) =>
-            model.modelName.toLowerCase().includes(searchTerm.toLowerCase())
+          data.filter(
+            (model) =>
+              model.modelName
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase()) ||
+              model.id.toLowerCase().includes(searchTerm.toLowerCase())
           )
-        ); // Filter returns ModelData[]
+        );
       }
     }, 300);
 
@@ -99,7 +104,9 @@ const Dashboard = () => {
           </ButtonPrimary>
           <ButtonPrimary className="hidden md:flex bg-placeholder items-center bg-[#F2F2FB] border-[#FEFEFE] border py-3 rounded-md px-4 gap-2 cursor-pointer">
             <CalendarIcon />
-            <span className="whitespace-nowrap text-[#9A9A9C]">April 11-April 2</span>
+            <span className="whitespace-nowrap text-[#9A9A9C]">
+              April 11-April 2
+            </span>
           </ButtonPrimary>
         </div>
 
@@ -109,7 +116,6 @@ const Dashboard = () => {
           setIsCreateModalOpen={setIsCreateModalOpen}
           isCreateModalOpen={isCreateModalOpen}
         />
-      
       </div>
 
       <CreateModelModal
