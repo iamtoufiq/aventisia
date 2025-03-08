@@ -77,7 +77,6 @@ const Dashboard = () => {
 
     setData((prevData) => [generatedModel, ...prevData]);
     setIsCreateModalOpen(false);
-    console.log("New Model Created:", generatedModel);
   };
 
   return (

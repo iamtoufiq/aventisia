@@ -23,8 +23,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     setPageName(item.label.toLowerCase());
   };
 
-  const isActive = pageName === item.label.toLowerCase();
-
+  const isActive = pageName.toLowerCase() === item.label.toLowerCase();
   return (
     <li>
       <button

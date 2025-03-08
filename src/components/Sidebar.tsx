@@ -23,7 +23,7 @@ const menuItems=[
          <SettingIcon/>
         ),
         label: "Settings",
-        route: "/settings",
+        route: "/",
       },
 
     ]
@@ -71,7 +71,7 @@ const menuItems=[
   }
 ]
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
-  const [pageName, setPageName] = useLocalStorage("selectedMenu", "dashboard");
+  const [pageName, setPageName] = useLocalStorage("selectedMenu", "Settings");
 
   return (
     <ClickOutside onClick={() => setSidebarOpen(false)}>

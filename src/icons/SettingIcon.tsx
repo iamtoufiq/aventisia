@@ -2,8 +2,7 @@ interface SettingIconProps{
   isActive?: boolean
 }
 
-const SettingIcon: React.FC<SettingIconProps> = ({isActive=true}) => {
-  console.log(isActive)
+const SettingIcon: React.FC<SettingIconProps> = () => {
   return (
     <svg
       width="18"
