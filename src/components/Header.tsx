@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
         <SearchInput
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="max-w-[273px] mx-auto"
+            className="max-w-[273px] mx-auto hidden lg:block"
             placeholder="Search"
           />
         <RightProfile />

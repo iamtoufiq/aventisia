@@ -2,7 +2,7 @@ import DropdownNotification from "./DropdownNotification"
 
 const RightProfile = () => {
   return (
-    <div className="flex items-center gap-3 2xsm:gap-7 ">
+    <div className=" items-center gap-3 2xsm:gap-7 hidden sm:flex sm:m-auto">
     <ul className="flex items-center gap-2 2xsm:gap-4">
 
       {/* <!-- Notification Menu Area --> */}

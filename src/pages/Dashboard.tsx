@@ -33,7 +33,7 @@ const Dashboard = () => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   // Transform MOCK_DATA to include llm
   const [data, setData] = useState<ModelData[]>(
-    [...MOCK_DATA, ...MOCK_DATA].map((item: Partial<ModelData>) => ({
+    [...MOCK_DATA].map((item: Partial<ModelData>) => ({
       ...item,
       llm: item.llm ?? "GPT-4", // Properly handle missing 'llm'
     })) as ModelData[]
@@ -109,6 +109,7 @@ const Dashboard = () => {
           setIsCreateModalOpen={setIsCreateModalOpen}
           isCreateModalOpen={isCreateModalOpen}
         />
+      
       </div>
 
       <CreateModelModal
