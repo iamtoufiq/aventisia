@@ -1,6 +1,7 @@
 import { Column } from 'react-table';
 export interface ModelData {
     id: string;
+    llm: string;
     modelName: string;
     modelType: string;
     createdOn: string;

@@ -1,5 +1,7 @@
+import { useState } from "react";
 import RightProfile from "./RightProfile";
-import Search from "./Search";
+import SearchInput from "./SearchInput";
+// import Search from "./Search";
 
 // import Logo from "../assets/Salesway.svg";
 interface HeaderProps {
@@ -8,6 +10,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
+  const [searchTerm , setSearchTerm] = useState('');
   return (
     <header className="flex sticky top-0  z-999  bg-white drop-shadow-1 ">
       <div className="flex flex-grow items-center px-6 py-4 shadow-2 md:px-6 2xl:px-11 gap-5 lg:min-h-[92px] ">
@@ -62,14 +65,19 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
 
 
       {/* right section */}
-      <section className="col-span-10 flex justify-between items-center bg-white relative">
+      <section className="col-span-10 flex gap-2 justify-between items-center bg-white relative">
 
-        <h3 id="_left-text" className="text-primary font-semibold hidden lg:block">
+        <h3 id="_left-text" className="text-primary font-semibold hidden lg:block whitespace-nowrap">
           AI/ML Model Builder
         </h3>
         <span className="lg:hidden"></span>
 
-        <Search className="max-w-[273px] hidden  flex-1 lg:flex-none" inputClass="bg-[#F9F9FB] border-[#FEFEFE]"/>
+        <SearchInput
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="max-w-[273px] mx-auto"
+            placeholder="Search"
+          />
         <RightProfile />
       </section>
     </header>

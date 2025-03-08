@@ -10,15 +10,15 @@ import {
   UsePaginationState,
 } from "react-table";
 import { ModelData } from "../constant/columns";
-import DeleteConfirmationModal from "./DeleteConfirmationModal"; // Import the modal
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
 import ActionIcon from "../icons/ActionIcon";
 import LeftIcon from "../icons/LeftIcon";
 
 interface SortingTableProps {
-  setIsCreateModalOpen: (isOpen: boolean) => void;
-  isCreateModalOpen: boolean;
   data: ModelData[];
   setData: React.Dispatch<React.SetStateAction<ModelData[]>>;
+  setIsCreateModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isCreateModalOpen: boolean;
 }
 
 const SortingTable: React.FC<SortingTableProps> = ({
@@ -49,7 +49,7 @@ const SortingTable: React.FC<SortingTableProps> = ({
     closeDeleteModal();
   };
 
-  const columns: Column<ModelData>[]  = useMemo(
+  const columns: Column<ModelData>[] = useMemo(
     () => [
       { Header: "Model Name", accessor: "modelName" },
       { Header: "Model Type", accessor: "modelType" },
@@ -113,22 +113,20 @@ const SortingTable: React.FC<SortingTableProps> = ({
               key={headerGroup.id}
               style={{ borderBottom: "3px solid #F2F2FB" }}
             >
-              {headerGroup.headers.map((column: ColumnInstance<ModelData>) => {
-                return (
-                  <th
-                    className="p-2"
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                    key={column.id}
-                  >
-                    {column.render("Header")}
-                    {column.canSort && (
-                      <span>
-                        {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
-                      </span>
-                    )}
-                  </th>
-                );
-              })}
+              {headerGroup.headers.map((column) => (
+                <th
+                  className="p-2"
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                  key={column.id}
+                >
+                  {column.render("Header")}
+                  {column.canSort && (
+                    <span>
+                      {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
+                    </span>
+                  )}
+                </th>
+              ))}
             </tr>
           ))}
         </thead>
@@ -159,7 +157,6 @@ const SortingTable: React.FC<SortingTableProps> = ({
 
       {/* Pagination Controls */}
       <div className="flex flex-col lg:flex-row gap-2 items-center justify-between w-full mt-4">
-        {/* Dynamic Pagination Info */}
         <p className="text-[#787E88] text-sm" id="_left">
           {`Showing ${pageIndex * pageSize + 1} to ${Math.min(
             (pageIndex + 1) * pageSize,
@@ -167,7 +164,6 @@ const SortingTable: React.FC<SortingTableProps> = ({
           )} of ${data.length} results`}
         </p>
 
-        {/* Pagination Buttons */}
         <div className="pagination flex justify-center gap-2">
           <button
             onClick={previousPage}
@@ -199,8 +195,11 @@ const SortingTable: React.FC<SortingTableProps> = ({
         </div>
       </div>
 
-      {/* Delete Confirmation Modal */}
-      <DeleteConfirmationModal isOpen={isModalOpen} onClose={closeDeleteModal} onConfirm={handleDelete} />
+      <DeleteConfirmationModal
+        isOpen={isModalOpen}
+        onClose={closeDeleteModal}
+        onConfirm={handleDelete}
+      />
     </>
   );
 };

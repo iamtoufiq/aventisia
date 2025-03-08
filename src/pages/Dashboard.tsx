@@ -5,8 +5,11 @@ import CreateModelModal from "../components/CreateModelModal";
 import MOCK_DATA from "../constant/MOCK_DATA.json";
 import CalendarIcon from "../icons/CalendarIcon";
 import FilterIcon from "../icons/FilterIcon";
+import HeadingSecondary from "../components/HeadingSecondary";
+import ButtonPrimary from "../components/ButtonPrimary";
+import SearchInput from "../components/SearchInput";
 
-interface ModelData {
+export interface ModelData {
   id: string;
   modelName: string;
   modelType: string;
@@ -17,31 +20,45 @@ interface ModelData {
   status: string;
 }
 
+
+// Define type for partial data from the modal
+interface NewModelInput {
+  modelName: string;
+  modelType: string;
+  llm: string;
+  description: string;
+}
+
 const Dashboard = () => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-  const [data, setData] = useState([...MOCK_DATA, ...MOCK_DATA]);
-  const [searchTerm, setSearchTerm] = useState(""); // Search input
+  // Transform MOCK_DATA to include llm
+  const [data, setData] = useState<ModelData[]>(
+    [...MOCK_DATA, ...MOCK_DATA].map((item: Partial<ModelData>) => ({
+      ...item,
+      llm: item.llm ?? "GPT-4", // Properly handle missing 'llm'
+    })) as ModelData[]
+  );
+  
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState<ModelData[]>(data);
 
-  // Debounce effect for search input
   useEffect(() => {
     const handler = setTimeout(() => {
       if (searchTerm.trim() === "") {
-        setFilteredData(data);
+        setFilteredData(data); // data is now ModelData[]
       } else {
         setFilteredData(
           data.filter((model) =>
             model.modelName.toLowerCase().includes(searchTerm.toLowerCase())
           )
-        );
+        ); // Filter returns ModelData[]
       }
-    }, 300); // 300ms debounce time
+    }, 300);
 
     return () => clearTimeout(handler);
   }, [searchTerm, data]);
 
-  // Function to create a new model
-  const createModel = (newModel: ModelData) => {
+  const createModel = (newModel: NewModelInput) => {
     const generatedModel: ModelData = {
       id: `ID:#${Math.floor(1000000 + Math.random() * 9000000)}`,
       modelName: newModel.modelName || "Untitled Model",
@@ -61,45 +78,31 @@ const Dashboard = () => {
   return (
     <DefaultLayout>
       <div className="mx-5 lg:mx-6 my-7 lg:my-8 bg-white p-5 lg:p-7 mb-5 rounded-lg flex flex-col gap-5">
-        {/* Header Section */}
         <div id="_header" className="flex items-center justify-between">
-          <h4 className="font-semibold text-lg hidden md:block leading-[20.94px] text-[#4C4E55]">
-            Model Library
-          </h4>
-          <button
-            className="flex gap-[10px] bg-[#4F46E3] border-[#554DCF] px-3 py-2 text-[#B8B4E2] rounded-md cursor-pointer items-center"
-            onClick={() => setIsCreateModalOpen(true)}
-          >
+          <HeadingSecondary text="Model Library" />
+          <ButtonPrimary onClick={() => setIsCreateModalOpen(true)}>
             <span>+</span>
             <span>Create New Model</span>
-          </button>
+          </ButtonPrimary>
         </div>
 
-        {/* Search Input */}
         <div className="flex justify-between gap-[10px] items-center text-[#99999B]">
-          <input
-            onChange={(e) => setSearchTerm(e.target.value)}
+          <SearchInput
             value={searchTerm}
-            type="text"
-            placeholder={"Search"}
-            className={`w-full rounded-sm bg-placeholder py-3 pl-12 pr-4 outline-0 ring-1 ring-gray-300 focus:ring-1 focus:ring-gray-500 placeholder:text-[#D2D6E2]`}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full"
+            placeholder="Search by Name, ID"
           />
-          <div
-            id="_filter"
-            className="hidden lg:flex bg-placeholder items-center border-[#FEFEFE] border py-3 rounded-md px-4 gap-2 cursor-pointer"
-          >
+          <ButtonPrimary className="hidden lg:flex bg-placeholder items-center border-[#FEFEFE] bg-[#F2F2FB] border py-3 rounded-md px-4 gap-2 cursor-pointer">
             <FilterIcon />
-            <span>Filters</span>
-          </div>
-          <div
-            id="_date-picker"
-            className="hidden md:flex bg-placeholder items-center border-[#FEFEFE] border py-3 rounded-md px-4 gap-2 cursor-pointer"
-          >
+            <span className="text-[#9A9A9C]">Filters</span>
+          </ButtonPrimary>
+          <ButtonPrimary className="hidden md:flex bg-placeholder items-center bg-[#F2F2FB] border-[#FEFEFE] border py-3 rounded-md px-4 gap-2 cursor-pointer">
             <CalendarIcon />
-            <span className="whitespace-nowrap">April 11-April 2</span>
-          </div>
+            <span className="whitespace-nowrap text-[#9A9A9C]">April 11-April 2</span>
+          </ButtonPrimary>
         </div>
-        {/* Pass filteredData instead of data */}
+
         <SortingTable
           setData={setData}
           data={filteredData}

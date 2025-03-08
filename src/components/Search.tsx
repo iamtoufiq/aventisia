@@ -1,4 +1,4 @@
-import SearchIcon from "../icons/Search"
+import SearchIcon from "../icons/SearchIcon";
 
 interface classNameProps {
   className?: string;
@@ -12,7 +12,7 @@ const Search: React.FC<classNameProps> = ({
 }) => {
   return (
     <div id="_search" className={`${className} relative`}>
-    <SearchIcon/>
+      <SearchIcon />
       <input
         type="text"
         placeholder={placeholder || "Search"}
