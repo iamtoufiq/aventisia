@@ -4,7 +4,7 @@ type SetValue<T> = T | ((val: T) => T);
 
 function useLocalStorage<T>(
   key: string,
-  initialValue: T,
+  initialValue: T
 ): [T, (value: SetValue<T>) => void] {
   // State to store our value
   // Pass  initial state function to useState so logic is only executed once
@@ -24,17 +24,13 @@ function useLocalStorage<T>(
     }
   });
 
-  // useEffect to update local storage when the state changes
   useEffect(() => {
     try {
-      // Allow value to be a function so we have same API as useState
       const valueToStore =
         typeof storedValue === "function"
           ? storedValue(storedValue)
           : storedValue;
-      // Save state
       if (typeof window !== "undefined") {
-        // browser code
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
     } catch (error) {
